@@ -72,11 +72,11 @@
            </humanPerformer>
            
            <!-- For each assignee, task is created -->
-           <multiInstanceLoopCharacteristics isSequential="false">
-           	  <loopDataInputRef>bpm_assignees</loopDataInputRef>
-           	  <inputDataItem name="reviewAssignee" />
-           	  <completionCondition>${wf_actualPercent >= wf_requiredApprovePercent || wf_requiredApprovePercent > (100 - wf_actualRejectPercent)}</completionCondition>
-           </multiInstanceLoopCharacteristics>
+  		<multiInstanceLoopCharacteristics isSequential="false">
+        		<loopDataInputRef>bpm_assignees</loopDataInputRef>
+        		<inputDataItem name="reviewAssignee" />
+        		<completionCondition>${nrOfCompletedInstances == wf_reviewerCount}</completionCondition>
+    		</multiInstanceLoopCharacteristics>
         </userTask>
 
         <sequenceFlow id='flow2' 
